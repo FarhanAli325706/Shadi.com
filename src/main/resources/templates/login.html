@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LOGIN</title>
+    <style>
+        body {
+            background-image: url(https://cdn.pixabay.com/photo/2018/08/03/04/36/love-3581038_960_720.jpg);
+            background-repeat: no-repeat;
+            background-size: 1370px 630px;
+        }
+        div {
+            height: 365px;
+            width: 350px;
+            background-color: white;
+            margin-left: 980px;
+            margin-top: 130px;
+            border-radius: 15px;
+            opacity: 0.8;
+        }
+        .textinput {
+            height: 40px;
+            width: 320px;
+            padding-left: 5px;
+            margin-left: 10px;
+        }
+        .textlabel {
+            margin-left: 10px;
+            font-size: 18px;
+        }
+        .login {
+            background-color: red;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 0px 0px 0px 112px;
+            border-radius: 15px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <form method="get" action="/getuser">
+            <br><br><br>
+            <label class="textlabel">Email :</label>
+            <br><br>
+            <input class="textinput" name="email" type="email" id="email" required/>
+            <br><br>
+            <label class="textlabel">Password :</label>
+            <br><br>
+            <input class="textinput" name="password" type="password" id="password" required/>
+            <br><br><br>
+            <input type="submit" class="login" value="LOGIN">
+        </form>
+    </div>
+</body>
+</html>
