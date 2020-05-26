@@ -16,9 +16,14 @@ public class HomeController {
         return "WelcomePage";
     }
     @RequestMapping("/login")
-    public String signup()
+    public String login()
     {
         return "login";
+    }
+    @RequestMapping("/signup")
+    public String signup()
+    {
+        return "signup";
     }
     @RequestMapping("/getuser")
     public String getUser(@RequestParam("email") String email, @RequestParam("password") String password)

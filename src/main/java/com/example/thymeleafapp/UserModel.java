@@ -22,6 +22,7 @@ public class UserModel implements Serializable {
     private String gender;
 
 
+
     public String getUsername() {
         return username;
     }

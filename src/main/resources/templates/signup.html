@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../static/signup.js"></script>
+    <title>SIGNUP</title>
+
+    <style>
+        body {
+            background-image: url(https://cdn.pixabay.com/photo/2018/08/03/04/36/love-3581038_960_720.jpg);
+            background-repeat: no-repeat;
+            background-size: 1370px 1100px;
+        }
+        div {
+            height: 910px;
+            width: 350px;
+            background-color: white;
+            margin-left: 970px;
+            margin-top: 130px;
+            border-radius: 15px;
+            opacity: 0.8;
+        }
+        .textinput {
+            height: 40px;
+            width: 320px;
+            padding-left: 5px;
+            margin-left: 10px;
+        }
+        .textlabel {
+            margin-left: 10px;
+            font-size: 18px;
+        }
+        .statuslabel {
+            margin-left: 10px;
+            font-size: 12px;
+        }
+        .login {
+            background-color: red;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 0px 0px 0px 112px;
+            border-radius: 15px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <form method="post" onsubmit="return validationChecks();" action="/Welcome">
+            <br><br><br>
+            <input class="textinput" name="fname" type="text" id="fname" placeholder="First Name" required/>
+            <br><br>
+            <input class="textinput" name="lname" type="text" id="lname" placeholder="Last Name" required/>
+            <br><br>
+            <input class="textinput" name="email" type="email" id="email" placeholder="Email" required/>
+            <br><br>
+            <input class="textinput" name="password" type="password" id="password" placeholder="Password" required/>
+            <br><br>
+            <input class="textinput" name="confirmpassword" type="password" id="confirmpassword" placeholder="Confirm Password" required/>
+            <br><br>
+            <input class="textinput" name="religion" type="text" id="religion" placeholder="Religion" required/>
+            <br><br>
+            <input class="textinput" name="country" type="text" id="country" placeholder="Country" required/>
+            <br><br>
+            <input class="textinput" name="city" type="text" id="city" placeholder="City" required/>
+            <br><br>
+            <input class="textinput" name="cast" type="text" id="cast" placeholder="Cast" required/>
+            <br><br>
+            <input class="textinput" name="gender" type="text" id="gender" placeholder="Gender" required/>
+            <br><br>
+            <label class="textlabel" id="birth">BirthDate :</label>
+            <br><br>
+            <input class="textinput" name="birthdate" type="date" id="birthdate"required/>
+            <br><br><br>
+            <input type="submit" class="login" value="SIGNUP">
+        </form>
+        <br>
+        <label id="status" class="statuslabel"></label>
+    </div>
+    <script>
+        function validationChecks() {
+            var gender = document.getElementById("gender").value;
+            var lname = document.getElementById("lname").value;
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirmpassword").value;
+            var size = password.length;
+            if(size<9) {
+                document.getElementById("status").innerText = "Password Should Contain minimum 9 Characters.";
+                document.getElementById("status").style.color = "red";
+                return false;
+            }
+            if(password.localeCompare(confirmPassword)!=0)
+            {
+                document.getElementById("status").innerText = "Password should be same as Confirm Password.";
+                document.getElementById("status").style.color = "red";
+                return false;
+            }
+            if(gender.localeCompare("Male")!=0 && gender.localeCompare("Female")!=0)
+            {
+                document.getElementById("status").innerText = "Gender should be Male or Female.";
+                document.getElementById("status").style.color = "red";
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>
