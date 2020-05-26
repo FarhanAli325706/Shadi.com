@@ -31,4 +31,22 @@ public class HomeController {
         UserModel result=userService.loginUser(email,password);
         return "WelcomePage";
     }
+    @RequestMapping("/registeruser")
+    public String registerUser(@RequestParam("fname") String fname, @RequestParam("lname") String lname, @RequestParam("email") String email, @RequestParam("password") String password, @RequestParam("religion") String religion, @RequestParam("country") String country, @RequestParam("city") String city, @RequestParam("cast") String cast, @RequestParam("gender") String gender, @RequestParam("birthdate") java.sql.Date birthdate)
+    {
+        //UserModel result=userService.loginUser(email,password);
+        String username=fname+" "+lname;
+        UserModel userModel=new UserModel();
+        userModel.setUsername(username);
+        userModel.setEmail(email);
+        userModel.setUserpassword(password);
+        userModel.setReligion(religion);
+        userModel.setCountry(country);
+        userModel.setCity(city);
+        userModel.setUsercast(cast);
+        userModel.setGender(gender);
+        userModel.setBirthdate(birthdate);
+        this.userService.signupUser(userModel);
+        return "WelcomePage";
+    }
 }
