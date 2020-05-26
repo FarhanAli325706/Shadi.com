@@ -9,7 +9,7 @@ import java.util.List;
 public class UserService {
     @Autowired
     UserRepository userRepository;
-    UserModel loginUser(String email, String password)
+    public UserModel loginUser(String email, String password)
     {
         int flag=0;
         List<UserModel> listOfUser=userRepository.findAll();
@@ -35,5 +35,11 @@ public class UserService {
         if(flag==1)
             return resultanUser;
         return null;
+    }
+    public void signupUser(UserModel u)
+    {
+        List<UserModel> listOfUser=userRepository.findAll();
+        u.setUserid(listOfUser.size()+1);
+        this.userRepository.save(u);
     }
 }
