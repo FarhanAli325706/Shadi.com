@@ -5,8 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class HomeController {
+    private HttpSession userSession;
     @Autowired
     UserService userService;
 
@@ -15,6 +18,13 @@ public class HomeController {
         return "WelcomePage";
     }
 
+    @RequestMapping("/index")
+    public String test()
+    {
+        if(userSession!=null)
+            return "index";
+        return "login";
+    }
     @RequestMapping("/login")
     public String login() {
         return "login";
@@ -26,8 +36,10 @@ public class HomeController {
     }
 
     @RequestMapping("/getuser")
-    public String getUser(@RequestParam("email") String email, @RequestParam("password") String password) {
-        UserModel result = userService.loginUser(email, password);
+    public String getUser(@RequestParam("email") String email, @RequestParam("password") String password, HttpSession session)
+    {
+        if(userService.loginUser(email,password,session))
+            this.userSession=session;
         return "details";
     }
 
