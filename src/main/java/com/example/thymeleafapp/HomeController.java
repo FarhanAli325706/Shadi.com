@@ -28,7 +28,7 @@ public class HomeController {
     @RequestMapping("/getuser")
     public String getUser(@RequestParam("email") String email, @RequestParam("password") String password) {
         UserModel result = userService.loginUser(email, password);
-        return "WelcomePage";
+        return "details";
     }
 
     @RequestMapping("/registeruser")

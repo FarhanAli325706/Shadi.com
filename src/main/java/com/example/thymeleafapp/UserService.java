@@ -9,15 +9,13 @@ import java.util.List;
 public class UserService {
     @Autowired
     UserRepository userRepository;
-    public UserModel loginUser(String email, String password)
-    {
-        int flag=0;
-        List<UserModel> listOfUser=userRepository.findAll();
-        UserModel resultanUser=new UserModel();
-        for (UserModel u : listOfUser)
-        {
-            if(u.getEmail().equals(email) && u.getUserpassword().equals(password))
-            {
+
+    public UserModel loginUser(String email, String password) {
+        int flag = 0;
+        List<UserModel> listOfUser = userRepository.findAll();
+        UserModel resultanUser = new UserModel();
+        for (UserModel u : listOfUser) {
+            if (u.getEmail().equals(email) && u.getUserpassword().equals(password)) {
                 resultanUser.setUserid(u.getUserid());
                 resultanUser.setUsername(u.getUsername());
                 resultanUser.setUserpassword(u.getUserpassword());
@@ -28,18 +26,18 @@ public class UserService {
                 resultanUser.setReligion(u.getReligion());
                 resultanUser.setCountry(u.getCountry());
                 resultanUser.setUsercast(u.getUsercast());
-                flag=1;
+                flag = 1;
                 break;
             }
         }
-        if(flag==1)
+        if (flag == 1)
             return resultanUser;
         return null;
     }
-    public void signupUser(UserModel u)
-    {
-        List<UserModel> listOfUser=userRepository.findAll();
-        u.setUserid(listOfUser.size()+1);
+
+    public void signupUser(UserModel u) {
+        List<UserModel> listOfUser = userRepository.findAll();
+        u.setUserid(listOfUser.size() + 1);
         this.userRepository.save(u);
     }
 }
