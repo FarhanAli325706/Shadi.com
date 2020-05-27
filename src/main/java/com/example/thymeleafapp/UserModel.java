@@ -1,15 +1,14 @@
 package com.example.thymeleafapp;
 
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
 @Entity
 @Table(name = "user_data")
 public class UserModel implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userid;
     private String email;
     private String userpassword;

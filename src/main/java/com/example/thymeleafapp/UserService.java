@@ -39,7 +39,7 @@ public class UserService {
     public void signupUser(UserModel u)
     {
         List<UserModel> listOfUser=userRepository.findAll();
-        u.setUserid(listOfUser.size()+1);
+        u.setUserid(-1);
         this.userRepository.save(u);
     }
 }
