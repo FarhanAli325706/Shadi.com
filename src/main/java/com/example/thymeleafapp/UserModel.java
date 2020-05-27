@@ -4,9 +4,11 @@ package com.example.thymeleafapp;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
+
 @Entity
 @Table(name = "user_data")
 public class UserModel implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userid;
@@ -21,13 +23,6 @@ public class UserModel implements Serializable {
     private String gender;
 
 
-
-    public String getUsername() {
-        return username;
-    }
-    public void setUsername(String username) {
-        this.username = username;
-    }
     public UserModel(Integer userid, String email, String userpassword, String city, String religion, String country, String usercast, Date birthdate, String username, String gender) {
         this.userid = userid;
         this.email = email;
@@ -37,8 +32,20 @@ public class UserModel implements Serializable {
         this.country = country;
         this.usercast = usercast;
         this.birthdate = birthdate;
-        this.username=username;
+        this.username = username;
         this.gender = gender;
+    }
+
+    public UserModel() {
+
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public Integer getUserid() {
@@ -111,11 +118,6 @@ public class UserModel implements Serializable {
 
     public void setGender(String gender) {
         this.gender = gender;
-    }
-
-    public UserModel()
-    {
-
     }
 
 
