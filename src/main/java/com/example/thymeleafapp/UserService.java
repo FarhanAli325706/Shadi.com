@@ -27,10 +27,10 @@ public class UserService {
             return true;
         return false;
     }
-    public void signupUser(UserModel u)
-    {
-        List<UserModel> listOfUser=userRepository.findAll();
-        u.setUserid(listOfUser.size()+1);
+
+    public void signupUser(UserModel u) {
+        List<UserModel> listOfUser = userRepository.findAll();
+        u.setUserid(listOfUser.size() + 1);
         this.userRepository.save(u);
     }
 }

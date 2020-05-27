@@ -1,6 +1,5 @@
 package com.example.thymeleafapp;
 
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,11 +12,12 @@ public class HomeController {
     private HttpSession userSession;
     @Autowired
     UserService userService;
+
     @RequestMapping("/Welcome")
-    public String homePage()
-    {
+    public String homePage() {
         return "WelcomePage";
     }
+
     @RequestMapping("/index")
     public String test()
     {
@@ -26,28 +26,28 @@ public class HomeController {
         return "login";
     }
     @RequestMapping("/login")
-    public String login()
-    {
+    public String login() {
         return "login";
     }
+
     @RequestMapping("/signup")
-    public String signup()
-    {
+    public String signup() {
         return "signup";
     }
+
     @RequestMapping("/getuser")
     public String getUser(@RequestParam("email") String email, @RequestParam("password") String password, HttpSession session)
     {
         if(userService.loginUser(email,password,session))
             this.userSession=session;
-        return "WelcomePage";
+        return "details";
     }
+
     @RequestMapping("/registeruser")
-    public String registerUser(@RequestParam("fname") String fname, @RequestParam("lname") String lname, @RequestParam("email") String email, @RequestParam("password") String password, @RequestParam("religion") String religion, @RequestParam("country") String country, @RequestParam("city") String city, @RequestParam("cast") String cast, @RequestParam("gender") String gender, @RequestParam("birthdate") java.sql.Date birthdate)
-    {
+    public String registerUser(@RequestParam("fname") String fname, @RequestParam("lname") String lname, @RequestParam("email") String email, @RequestParam("password") String password, @RequestParam("religion") String religion, @RequestParam("country") String country, @RequestParam("city") String city, @RequestParam("cast") String cast, @RequestParam("gender") String gender, @RequestParam("birthdate") java.sql.Date birthdate) {
         //UserModel result=userService.loginUser(email,password);
-        String username=fname+" "+lname;
-        UserModel userModel=new UserModel();
+        String username = fname + " " + lname;
+        UserModel userModel = new UserModel();
         userModel.setUsername(username);
         userModel.setEmail(email);
         userModel.setUserpassword(password);
