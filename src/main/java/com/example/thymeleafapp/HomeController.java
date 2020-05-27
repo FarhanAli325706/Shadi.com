@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -12,7 +14,9 @@ public class HomeController {
     private HttpSession userSession;
     @Autowired
     UserService userService;
-
+    FeedbackService feedbackService;
+    private String email;
+    private String feedback;
     @RequestMapping("/Welcome")
     public String homePage() {
         return "WelcomePage";
@@ -60,4 +64,26 @@ public class HomeController {
         this.userService.signupUser(userModel);
         return "WelcomePage";
     }
+
+    @RequestMapping("/feedback")
+    public String Feedbackpage(){return "feedback";}
+    @RequestMapping("/Userfeedback")
+    public String enterFeedback(@RequestParam ("email") String email, @RequestParam("description") String feedback)
+    {
+        FeedBackModel fmodel = new FeedBackModel();
+        UserModel user = new UserModel();
+        List<UserModel> listOfUser=userService.userRepository.findAll();
+        System.out.println(email + feedback);
+        return "WelcomePage";
+      /*  for(UserModel u: listOfUser)
+        {
+            if(user.getEmail().equals(email))
+            {
+                fmodel.setDescription(feedback);
+                feedbackService.userRepository.save(user);
+                return "WelcomePage";
+            }
+        }
+        return "not user found";
+*/    }
 }
