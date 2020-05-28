@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="utf-8"/>
@@ -21,13 +21,13 @@
     <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/profile/detail">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Profile</a>
+                <a class="nav-link" href="/profile/detail">Profile</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Likes</a>
+                <a class="nav-link" href="/profile/editprofile">Edit profile</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Contact Us</a>
@@ -103,8 +103,10 @@
 </div>
 <div class="container">
     <div class="col-md-2">
-        <a class="btn btn-primary text-left d-lg-flex align-items-lg-center" href="Edit profile.html" type="button">Edit
-            Profile</a>
+        <a class="btn btn-primary text-left d-lg-flex align-items-lg-center" href="/profile/editprofile" type="button">
+            Edit
+            Profile
+        </a>
     </div>
 </div>
 

@@ -88,17 +88,33 @@ public class UserService {
     }
 
     public String saveImage(MultipartFile imageFile) {
+        if (HomeController.getUserSession() == null) {
+            try {
+                String folder = System.getProperty("user.dir");
+                folder += "/src/main/resources/static/images/";
+                System.out.println(folder);
+                File file = new File(folder + findMaxId().toString() + imageFile.getOriginalFilename());
+                imageFile.transferTo(file);
+                return "/images/" + findMaxId().toString() + imageFile.getOriginalFilename();
+            } catch (Exception e) {
+                System.out.println("Error saving photo!");
+                System.out.println(e.getMessage());
+            }
+            return "";
+        }
         try {
+            UserModel u = (UserModel) HomeController.getUserSession().getAttribute("currentUser");
             String folder = System.getProperty("user.dir");
             folder += "/src/main/resources/static/images/";
             System.out.println(folder);
-            File file = new File(folder + findMaxId().toString() + imageFile.getOriginalFilename());
+            File file = new File(folder + u.getUserid().toString() +imageFile.getOriginalFilename());
             imageFile.transferTo(file);
-            return "/images/" + findMaxId().toString() + imageFile.getOriginalFilename();
+            return "/images/" + u.getUserid().toString() + imageFile.getOriginalFilename();
         } catch (Exception e) {
             System.out.println("Error saving photo!");
             System.out.println(e.getMessage());
         }
         return "";
+
     }
 }

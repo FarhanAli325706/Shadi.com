@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/Navigation-Clean.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <title>Edit Profile</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">Shadi.com</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
+            aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/profile/detail">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/profile/detail">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/profile/editprofile">Edit profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Contact Us</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Logout</button>
+        </form>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="col-md-6">
+        <h1 class="my-4">Edit Profile<br></h1>
+        <form method="post" class="form-group" onsubmit="return validationChecks();" action="/profile/saveuser"
+              enctype="multipart/form-data">
+            <br><br><br>
+            <input class="form-control" name="fname" type="text" id="fname" placeholder="First Name" required/>
+            <br><br>
+            <input class="form-control" name="lname" type="text" id="lname" placeholder="Last Name" required/>
+            <br><br>
+            <input th:value="${user.email}" class="form-control" name="email" type="email" id="email" placeholder="Email" required/>
+            <br><br>
+            <input th:value="${user.userpassword}" class="form-control" name="password" type="password" id="password" placeholder="Password" required/>
+            <br><br>
+            <input class="form-control" name="confirmpassword" type="password" id="confirmpassword"
+                   placeholder="Confirm Password" required/>
+            <br><br>
+            <input th:value="${user.religion}" class="form-control" name="religion" type="text" id="religion" placeholder="Religion" required/>
+            <br><br>
+            <input th:value="${user.country}" class="form-control" name="country" type="text" id="country" placeholder="Country" required/>
+            <br><br>
+            <input th:value="${user.city}" class="form-control" name="city" type="text" id="city" placeholder="City" required/>
+            <br><br>
+            <input th:value="${user.usercast}" class="form-control" name="cast" type="text" id="cast" placeholder="Cast" required/>
+            <br><br>
+            <input th:value="${user.gender}" class="form-control" name="gender" type="text" id="gender" placeholder="Gender" required/>
+            <br><br>
+            Birth date:
+            <input th:value="${user.birthdate}" class="form-control" name="birthdate" type="date" id="birthdate" required/>
+            <br><br>
+            Profile picture:
+            <input type="file" name="imageFile">
+            <br><br><br>
+            <input type="submit" class="btn btn-primary" value="Save">
+        </form>
+    </div>
+
+    <br>
+    <label id="status" class="statuslabel"></label>
+</div>
+<script>
+        function validationChecks() {
+            var gender = document.getElementById("gender").value;
+            var lname = document.getElementById("lname").value;
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirmpassword").value;
+            var size = password.length;
+            if(size<9) {
+                document.getElementById("status").innerText = "Password Should Contain minimum 9 Characters.";
+                document.getElementById("status").style.color = "red";
+                return false;
+            }
+            if(password.localeCompare(confirmPassword)!=0)
+            {
+                document.getElementById("status").innerText = "Password should be same as Confirm Password.";
+                document.getElementById("status").style.color = "red";
+                return false;
+            }
+            if(gender.localeCompare("Male")!=0 && gender.localeCompare("Female")!=0)
+            {
+                document.getElementById("status").innerText = "Gender should be Male or Female.";
+                document.getElementById("status").style.color = "red";
+                return false;
+            }
+            return true;
+        }
+
+
+
+
+
+
+</script>
+</body>
+</html>
