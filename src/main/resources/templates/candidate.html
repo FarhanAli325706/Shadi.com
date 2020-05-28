@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/Navigation-Clean.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <title>Find People</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">Shadi.com</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
+            aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/profile/detail">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/profile/detail">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/profile/editprofile">Edit profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/profile/candidates">Find People</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Contact Us</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Logout</button>
+        </form>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="col-md-6">
+        <h1 class="my-4">Find people who best match you!<br></h1>
+        <form class="form-inline my-2 my-lg-0" method="get" action="/profile/candidates">
+            <input class="form-control mr-sm-2" type="text" value="" name="query" placeholder="Search">
+            <input class="btn btn-secondary my-2 my-sm-0" type="submit" value="Search"/>
+        </form>
+        <br>
+        <br>
+        <div class="row">
+            <div th:each="user: ${users}">
+                <div class="col-sm-10 col-lg-4 col-md-5">
+                    <div class="card" style="width: 18rem;">
+                        <img th:src="${user.image_path}" class="card-img-top" width="350" height="280" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${user.username}"></h5>
+                            <p class="card-text">
+                                <a href="#" class="btn btn-info">Go to details</a>
+
+                                <br /> <br />
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <label id="status" class="statuslabel"></label>
+</div>
+
+</body>
+</html>

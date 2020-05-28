@@ -1,7 +1,9 @@
 package com.example.thymeleafapp;
 
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.sql.Date;
 
@@ -10,7 +12,6 @@ import java.sql.Date;
 public class UserModel implements Serializable {
 
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userid;
 
 
@@ -25,9 +26,9 @@ public class UserModel implements Serializable {
     private java.sql.Date birthdate;
     private String username;
     private String gender;
+    private String image_path;
 
-
-    public UserModel(Integer userid, String email, String userpassword, String city, String religion, String country, String usercast, Date birthdate, String username, String gender, Integer preference_id) {
+    public UserModel(Integer userid, String email, String userpassword, String city, String religion, String country, String usercast, Date birthdate, String username, String gender, Integer preference_id, String image_path) {
         this.userid = userid;
         this.email = email;
         this.userpassword = userpassword;
@@ -38,6 +39,7 @@ public class UserModel implements Serializable {
         this.birthdate = birthdate;
         this.username = username;
         this.gender = gender;
+        this.image_path = image_path;
         this.preference_id=preference_id;
     }
 
@@ -46,6 +48,14 @@ public class UserModel implements Serializable {
     }
     public Integer getPreference_id() {
         return preference_id;
+    }
+
+    public String getImage_path() {
+        return image_path;
+    }
+
+    public void setImage_path(String image_path) {
+        this.image_path = image_path;
     }
 
     public void setPreference_id(Integer preference_id) {

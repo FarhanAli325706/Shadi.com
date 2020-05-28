@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Profile</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
@@ -21,13 +21,16 @@
     <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/profile/detail">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Profile</a>
+                <a class="nav-link" href="/profile/detail">Profile</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Likes</a>
+                <a class="nav-link" href="/profile/editprofile">Edit profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/profile/candidates">Find People</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Contact Us</a>
@@ -41,50 +44,72 @@
 <div class="container">
     <h1 class="my-4">Profile<br></h1>
     <div class="row">
-        <div class="col-md-6"><img class="img-thumbnail"
-                                   src="https://www.biography.com/.image/t_share/MTE5NDg0MDU0OTU2OTAxOTAz/albert-einstein-9285408-1-402.jpg"
-                                   width="400"></div>
+        <div class="col-md-6">
+            <img class="img-thumbnail" th:src="${img}" width="400">
+        </div>
         <div class="col-md-6">
             <h3 class="my-3">Personal Information</h3>
             <ul class="list-unstyled">
                 <li>
-                        <span style="font-weight:bold">
-                            Name:
-                        </span>
-                    <span>Lorem Ipsum</span>
+                    <span style="font-weight:bold">
+                        Name:
+                    </span>
+                    <span th:text="${user.username}"></span>
                 </li>
                 <li>
-                        <span style="font-weight:bold">
-                            Age:
-                        </span>
-                    <span>Lorem Ipsum</span>
+                    <span style="font-weight:bold">
+                        Email:
+                    </span>
+                    <span th:text="${user.email}"></span>
                 </li>
                 <li>
-                        <span style="font-weight:bold">
-                            Weight:
-                        </span>
-                    <span>Lorem Ipsum</span>
+                    <span style="font-weight:bold">
+                        City:
+                    </span>
+                    <span th:text="${user.city}"></span>
+                </li>
+                <li>
+                    <span style="font-weight:bold">
+                        Religion:
+                    </span>
+                    <span th:text="${user.religion}"></span>
+                </li>
+                <li>
+                    <span style="font-weight:bold">
+                        Country:
+                    </span>
+                    <span th:text="${user.country}"></span>
+                </li>
+                <li>
+                    <span style="font-weight:bold">
+                        Cast:
+                    </span>
+                    <span th:text="${user.usercast}"></span>
+                </li>
+                <li>
+                    <span style="font-weight:bold">
+                        Date of Birth:
+                    </span>
+                    <span th:text="${user.birthdate}"></span>
+                </li>
+                <li>
+                    <span style="font-weight:bold">
+                        Gender:
+                    </span>
+                    <span th:text="${user.gender}"></span>
                 </li>
             </ul>
-            <h3 class="my-3">About me</h3>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque
-                urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies,
-                justo eu convallis placerat, felis
-                enim.
-            </p>
+
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm-6 col-md-3 mb-4"><a href="#"></a></div>
-        <div class="col-sm-6 col-md-3 mb-4"><a href="#"></a></div>
-        <div class="col-sm-6 col-md-3 mb-4"><a href="#"></a></div>
-    </div>
+
 </div>
 <div class="container">
     <div class="col-md-2">
-        <a class="btn btn-primary text-left d-lg-flex align-items-lg-center" href="Edit profile.html" type="button">Edit
-            Profile</a>
+        <a class="btn btn-primary text-left d-lg-flex align-items-lg-center" href="/profile/editprofile" type="button">
+            Edit
+            Profile
+        </a>
     </div>
 </div>
 
