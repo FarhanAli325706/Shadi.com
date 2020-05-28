@@ -1,24 +1,24 @@
 package com.example.thymeleafapp;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "feedback")
-public class FeedBackModel {
+public class FeedBackModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer fID;
     private String description;
-
-    @JoinColumn(name = "userID")
-    private UserModel user;
-
-    public FeedBackModel(String description, UserModel user) {
-        this.description = description;
-        this.user = user;
-    }
+    private Integer user_id;
 
     public FeedBackModel() {
+    }
+
+    public FeedBackModel(Integer fID, String description, Integer user_id) {
+        this.fID = fID;
+        this.description = description;
+        this.user_id = user_id;
     }
 
     public Integer getfID() {
@@ -37,11 +37,11 @@ public class FeedBackModel {
         this.description = description;
     }
 
-    public UserModel getUser() {
-        return user;
+    public Integer getUser_id() {
+        return user_id;
     }
 
-    public void setUser(UserModel user) {
-        this.user = user;
+    public void setUser_id(Integer user_id) {
+        this.user_id = user_id;
     }
 }

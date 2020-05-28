@@ -16,6 +16,7 @@ public class HomeController {
     @Autowired
     PreferenceService preferenceService;
     FeedbackService feedbackService;
+    ContactUsService contactUsService;
     static private HttpSession userSession;
     private String email;
     private String feedback;
@@ -41,6 +42,9 @@ public class HomeController {
     public String signup() {
         return "signup";
     }
+
+    @RequestMapping("/Contact")
+    public  String contact(){ return "contactus";}
 
     @RequestMapping("/getuser")
     public String getUser(@RequestParam("email") String email, @RequestParam("password") String password, HttpSession session) {
@@ -79,7 +83,7 @@ public class HomeController {
         return "feedback";
     }
 
- 
+
         @RequestMapping("/setpreferences")
         public String setPreferences()
         {
@@ -105,5 +109,40 @@ public class HomeController {
         {
             this.preferenceService.updatePreference(preference_id,currentUserid);
         }
+    @RequestMapping ("/ContactMessage")
+    public String CONTACTUS(@RequestParam("name") String cname, @RequestParam("email") String mail, @RequestParam("Message") String message)
+    {
+        ContactUsModel contactUsModel= new ContactUsModel(-1, cname , mail , message );
+      //  contactUsModel.setCname(cname);
+      //  contactUsModel.setEmail(mail);
+      //  contactUsModel.setMessage(message);
+      //  contactUsModel.setContactID(-1);
+        System.out.println(cname + mail + message);
 
+        contactUsService.save(contactUsModel);
+        return "WelcomePage";
+    }
+
+    @RequestMapping("/Userfeedback")
+    public String enterFeedback( @RequestParam("email") String email, @RequestParam("description") String feedback) {
+        if (userSession != null) {
+            FeedBackModel fback = new FeedBackModel();
+            UserModel user = (UserModel) userSession.getAttribute("currentUser");
+            int id = user.getUserid();
+            System.out.println(id);
+            //return "WelcomePage";
+            //  if(user.getEmail().equals(email))
+            //{
+            fback.setDescription(feedback);
+            fback.setfID(-1);
+            feedbackService.save(fback);
+
+            // System.out.println(fback.getfID() + fback.getDescription());
+            return "details";
+            //}
+        }
+
+
+        return "WelcomePage";
+    }
 }
