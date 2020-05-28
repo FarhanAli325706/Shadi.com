@@ -46,42 +46,49 @@
             border-radius: 15px;
             cursor: pointer;
         }
+
+
+
     </style>
 </head>
 <body>
-    <div>
-        <form method="post" onsubmit="return validationChecks();" action="/registeruser">
-            <br><br><br>
-            <input class="textinput" name="fname" type="text" id="fname" placeholder="First Name" required/>
-            <br><br>
-            <input class="textinput" name="lname" type="text" id="lname" placeholder="Last Name" required/>
-            <br><br>
-            <input class="textinput" name="email" type="email" id="email" placeholder="Email" required/>
-            <br><br>
-            <input class="textinput" name="password" type="password" id="password" placeholder="Password" required/>
-            <br><br>
-            <input class="textinput" name="confirmpassword" type="password" id="confirmpassword" placeholder="Confirm Password" required/>
-            <br><br>
-            <input class="textinput" name="religion" type="text" id="religion" placeholder="Religion" required/>
-            <br><br>
-            <input class="textinput" name="country" type="text" id="country" placeholder="Country" required/>
-            <br><br>
-            <input class="textinput" name="city" type="text" id="city" placeholder="City" required/>
-            <br><br>
-            <input class="textinput" name="cast" type="text" id="cast" placeholder="Cast" required/>
-            <br><br>
-            <input class="textinput" name="gender" type="text" id="gender" placeholder="Gender" required/>
-            <br><br>
-            <label class="textlabel" id="birth">BirthDate :</label>
-            <br><br>
-            <input class="textinput" name="birthdate" type="date" id="birthdate"required/>
-            <br><br><br>
-            <input type="submit" class="login" value="SIGNUP">
-        </form>
-        <br>
-        <label id="status" class="statuslabel"></label>
-    </div>
-    <script>
+<div>
+    <form method="post" onsubmit="return validationChecks();" action="/registeruser" enctype="multipart/form-data">
+        <br><br><br>
+        <input class="textinput" name="fname" type="text" id="fname" placeholder="First Name" required/>
+        <br><br>
+        <input class="textinput" name="lname" type="text" id="lname" placeholder="Last Name" required/>
+        <br><br>
+        <input class="textinput" name="email" type="email" id="email" placeholder="Email" required/>
+        <br><br>
+        <input class="textinput" name="password" type="password" id="password" placeholder="Password" required/>
+        <br><br>
+        <input class="textinput" name="confirmpassword" type="password" id="confirmpassword"
+               placeholder="Confirm Password" required/>
+        <br><br>
+        <input class="textinput" name="religion" type="text" id="religion" placeholder="Religion" required/>
+        <br><br>
+        <input class="textinput" name="country" type="text" id="country" placeholder="Country" required/>
+        <br><br>
+        <input class="textinput" name="city" type="text" id="city" placeholder="City" required/>
+        <br><br>
+        <input class="textinput" name="cast" type="text" id="cast" placeholder="Cast" required/>
+        <br><br>
+        <input class="textinput" name="gender" type="text" id="gender" placeholder="Gender" required/>
+        <br><br>
+        <label class="textlabel" id="birth">BirthDate :</label>
+        <br><br>
+        <input class="textinput" name="birthdate" type="date" id="birthdate" required/>
+        <br><br>
+        <input type="file" name="imageFile">
+        <br><br><br>
+        <input type="submit" class="login" value="SIGNUP">
+    </form>
+
+    <br>
+    <label id="status" class="statuslabel"></label>
+</div>
+<script>
         function validationChecks() {
             var gender = document.getElementById("gender").value;
             var lname = document.getElementById("lname").value;
@@ -107,6 +114,9 @@
             }
             return true;
         }
-    </script>
+
+
+
+</script>
 </body>
 </html>
