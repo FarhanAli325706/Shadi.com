@@ -34,6 +34,7 @@ public class UserService {
     public void signupUser(UserModel u) {
         List<UserModel> listOfUser = userRepository.findAll();
         u.setUserid(listOfUser.size() + 1);
+        u.setPreference_id(null);
         this.userRepository.save(u);
     }
 

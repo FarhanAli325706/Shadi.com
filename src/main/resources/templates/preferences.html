@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Set Preferences</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/Navigation-Clean.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <style>
+        .div1 {
+            height: 250px;
+            width: 350px;
+            background-color: DodgerBlue;
+            margin-left: 200px;
+            margin-top: -400px;
+            border-radius: 15px;
+            opacity: 0.8;
+        }
+        .div2 {
+            height: 550px;
+            width: 350px;
+            background-color: DodgerBlue;
+            margin-left: 770px;
+            margin-top: 40px;
+            border-radius: 15px;
+            opacity: 0.8;
+        }
+        .textinput {
+            height: 40px;
+            width: 320px;
+            padding-left: 8px;
+            margin-left: 13px;
+            border-radius: 10px;
+        }
+        .textlabel {
+            margin-left: 10px;
+            font-size: 18px;
+        }
+        .statuslabel {
+            margin-left: 10px;
+            font-size: 12px;
+        }
+        .login {
+            background-color: DarkslateGray;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 0px 0px 0px 118px;
+            border-radius: 15px;
+            cursor: pointer;
+        }
+        .quote {
+            color: White;
+            font-size: 200%;
+            font-family: Comic Sans MS;
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">Shadi.com</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
+                aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Likes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Set Preferences</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact Us</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Logout</button>
+            </form>
+        </div>
+    </nav>
+    <div class="div2">
+        <form method="post" action="/storepreferences">
+            <br><br><br>
+            <input class="textinput" name="religion" type="text" id="religion" placeholder="Religion" required/>
+            <br><br>
+            <input class="textinput" name="country" type="text" id="country" placeholder="Country" required/>
+            <br><br>
+            <input class="textinput" name="city" type="text" id="city" placeholder="City" required/>
+            <br><br>
+            <input class="textinput" name="cast" type="text" id="cast" placeholder="Cast" required/>
+            <br><br>
+            <input class="textinput" name="gender" type="text" id="gender" placeholder="Gender" required/>
+            <br><br>
+            <input class="textinput" name="age" type="text" id="age" placeholder="Age" required/>
+            <br><br><br>
+            <input type="submit" class="login" value="SAVE">
+        </form>
+    </div>
+    <div class="div1">
+        <p class="quote"><b>Set Preferences help us to find the best matches for you.</b></p>
+    </div>
+</body>
+</html>

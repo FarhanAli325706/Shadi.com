@@ -13,6 +13,10 @@ public class UserModel implements Serializable {
 
     @Id
     private Integer userid;
+
+
+
+    private Integer preference_id;
     private String email;
     private String userpassword;
     private String city;
@@ -24,7 +28,7 @@ public class UserModel implements Serializable {
     private String gender;
     private String image_path;
 
-    public UserModel(String email, String userpassword, String city, String religion, String country, String usercast, Date birthdate, String username, String gender, String image_path, Integer userid) {
+    public UserModel(Integer userid, String email, String userpassword, String city, String religion, String country, String usercast, Date birthdate, String username, String gender, Integer preference_id, String image_path) {
         this.userid = userid;
         this.email = email;
         this.userpassword = userpassword;
@@ -36,10 +40,14 @@ public class UserModel implements Serializable {
         this.username = username;
         this.gender = gender;
         this.image_path = image_path;
+        this.preference_id=preference_id;
     }
 
     public UserModel() {
 
+    }
+    public Integer getPreference_id() {
+        return preference_id;
     }
 
     public String getImage_path() {
@@ -50,6 +58,9 @@ public class UserModel implements Serializable {
         this.image_path = image_path;
     }
 
+    public void setPreference_id(Integer preference_id) {
+        this.preference_id = preference_id;
+    }
     public String getUsername() {
         return username;
     }

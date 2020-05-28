@@ -13,6 +13,8 @@ import java.util.List;
 public class HomeController {
     @Autowired
     UserService userService;
+    @Autowired
+    PreferenceService preferenceService;
     FeedbackService feedbackService;
     static private HttpSession userSession;
     private String email;
@@ -77,25 +79,31 @@ public class HomeController {
         return "feedback";
     }
 
-    @RequestMapping("/Userfeedback")
-    public String enterFeedback(@RequestParam("email") String email, @RequestParam("description") String feedback) {
-        FeedBackModel fmodel = new FeedBackModel();
-        UserModel user = new UserModel();
-        List<UserModel> listOfUser = userService.userRepository.findAll();
-        System.out.println(email + feedback);
-        return "WelcomePage";
-      /*  for(UserModel u: listOfUser)
+ 
+        @RequestMapping("/setpreferences")
+        public String setPreferences()
         {
-            if(user.getEmail().equals(email))
-            {
-                fmodel.setDescription(feedback);
-                feedbackService.userRepository.save(user);
-                return "WelcomePage";
-            }
+            return "preferences";
         }
-        return "not user found";
-*/
-    }
-
+        @RequestMapping("/storepreferences")
+        public String storePreferences(@RequestParam("religion") String religion, @RequestParam("country") String country, @RequestParam("city") String city, @RequestParam("cast") String cast, @RequestParam("gender") String gender, @RequestParam("age") Integer age)
+        {
+            PreferenceModel preferenceModel = new PreferenceModel();
+            preferenceModel.setReligion(religion);
+            preferenceModel.setCountry(country);
+            preferenceModel.setCity(city);
+            preferenceModel.setPartnercast(cast);
+            preferenceModel.setGender(gender);
+            preferenceModel.setAge(age);
+            Integer preference_id=this.preferenceService.storePreference(preferenceModel);
+            UserModel currentUser=(UserModel)userSession.getAttribute("currentUser");
+            this.updatePreference(preference_id,currentUser.getUserid());
+            return "details";
+        }
+        @RequestMapping("/updatepreference")
+        public void updatePreference(Integer preference_id, Integer currentUserid)
+        {
+            this.preferenceService.updatePreference(preference_id,currentUserid);
+        }
 
 }
