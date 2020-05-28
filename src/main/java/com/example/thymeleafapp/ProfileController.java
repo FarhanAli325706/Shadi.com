@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 @RequestMapping("/profile")
 public class ProfileController {
@@ -53,6 +56,34 @@ public class ProfileController {
             userModel.setImage_path(img_path);
             userService.userRepository.save(userModel);
             return "redirect:/profile/detail";
+        }
+        return "redirect:/login";
+    }
+
+    @RequestMapping("/candidates")
+    public String showCandidates(Model model, @RequestParam(value = "query", required = false) String query) {
+        if (HomeController.getUserSession() != null) {
+            List<UserModel> users = userService.userRepository.findAll();
+            UserModel user = (UserModel) HomeController.getUserSession().getAttribute("currentUser");
+
+            List<UserModel> searchedUsers = new ArrayList<>();
+            if (query == null) {
+                for (UserModel u :
+                        users) {
+                    if (!u.getUserid().equals(user.getUserid())) {
+                        searchedUsers.add(u);
+                    }
+                }
+            } else {
+                for (UserModel u :
+                        users) {
+                    if (!u.getGender().equals(user.getGender()) && u.getUsername().toLowerCase().contains(query.toLowerCase())) {
+                        searchedUsers.add(u);
+                    }
+                }
+            }
+            model.addAttribute("users", searchedUsers);
+            return "candidate";
         }
         return "redirect:/login";
     }
