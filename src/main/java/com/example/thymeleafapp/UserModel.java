@@ -10,8 +10,12 @@ import java.sql.Date;
 public class UserModel implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userid;
+
+
+
+    private Integer preference_id;
     private String email;
     private String userpassword;
     private String city;
@@ -23,7 +27,7 @@ public class UserModel implements Serializable {
     private String gender;
 
 
-    public UserModel(Integer userid, String email, String userpassword, String city, String religion, String country, String usercast, Date birthdate, String username, String gender) {
+    public UserModel(Integer userid, String email, String userpassword, String city, String religion, String country, String usercast, Date birthdate, String username, String gender, Integer preference_id) {
         this.userid = userid;
         this.email = email;
         this.userpassword = userpassword;
@@ -34,12 +38,19 @@ public class UserModel implements Serializable {
         this.birthdate = birthdate;
         this.username = username;
         this.gender = gender;
+        this.preference_id=preference_id;
     }
 
     public UserModel() {
 
     }
+    public Integer getPreference_id() {
+        return preference_id;
+    }
 
+    public void setPreference_id(Integer preference_id) {
+        this.preference_id = preference_id;
+    }
     public String getUsername() {
         return username;
     }

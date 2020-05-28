@@ -14,6 +14,8 @@ public class HomeController {
     private HttpSession userSession;
     @Autowired
     UserService userService;
+    @Autowired
+    PreferenceService preferenceService;
     FeedbackService feedbackService;
     private String email;
     private String feedback;
@@ -86,4 +88,29 @@ public class HomeController {
         }
         return "not user found";
 */    }
+        @RequestMapping("/setpreferences")
+        public String setPreferences()
+        {
+            return "preferences";
+        }
+        @RequestMapping("/storepreferences")
+        public String storePreferences(@RequestParam("religion") String religion, @RequestParam("country") String country, @RequestParam("city") String city, @RequestParam("cast") String cast, @RequestParam("gender") String gender, @RequestParam("age") Integer age)
+        {
+            PreferenceModel preferenceModel = new PreferenceModel();
+            preferenceModel.setReligion(religion);
+            preferenceModel.setCountry(country);
+            preferenceModel.setCity(city);
+            preferenceModel.setPartnercast(cast);
+            preferenceModel.setGender(gender);
+            preferenceModel.setAge(age);
+            Integer preference_id=this.preferenceService.storePreference(preferenceModel);
+            UserModel currentUser=(UserModel)userSession.getAttribute("currentUser");
+            this.updatePreference(preference_id,currentUser.getUserid());
+            return "details";
+        }
+        @RequestMapping("/updatepreference")
+        public void updatePreference(Integer preference_id, Integer currentUserid)
+        {
+            this.preferenceService.updatePreference(preference_id,currentUserid);
+        }
 }
