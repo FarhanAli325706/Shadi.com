@@ -4,14 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class FeedbackService {
+public class ContactUsService {
     @Autowired
-    FeedbackRepository feedbackRepository;
+    ContactUsRepository contactUsRepository;
 
-
-    public void save( FeedBackModel fmodel)
+    public void save( ContactUsModel contactUsModel)
     {
-        feedbackRepository.save(fmodel);
+        contactUsRepository.save(contactUsModel);
     }
-
 }
