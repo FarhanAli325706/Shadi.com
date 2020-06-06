@@ -15,7 +15,9 @@ public class HomeController {
     UserService userService;
     @Autowired
     PreferenceService preferenceService;
+    @Autowired
     FeedbackService feedbackService;
+    @Autowired
     ContactUsService contactUsService;
     static private HttpSession userSession;
     private String email;
@@ -124,22 +126,14 @@ public class HomeController {
     }
 
     @RequestMapping("/Userfeedback")
-    public String enterFeedback( @RequestParam("email") String email, @RequestParam("description") String feedback) {
+    public String enterFeedback( @RequestParam("description") String feedback) {
         if (userSession != null) {
-            FeedBackModel fback = new FeedBackModel();
-            UserModel user = (UserModel) userSession.getAttribute("currentUser");
-            int id = user.getUserid();
-            System.out.println(id);
-            //return "WelcomePage";
-            //  if(user.getEmail().equals(email))
-            //{
-            fback.setDescription(feedback);
-            fback.setfID(-1);
-            feedbackService.save(fback);
 
-            // System.out.println(fback.getfID() + fback.getDescription());
-            return "details";
-            //}
+            UserModel user = (UserModel) userSession.getAttribute("currentUser");
+            FeedBackModel fback = new FeedBackModel(feedbackService.findMaxId(), feedback, user.getUserid());
+            feedbackService.save(fback);
+            return "redirect:/profile/detail";
+
         }
 
 

@@ -1,137 +1,79 @@
-<html>
+<!DOCTYPE html>
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
-    <title>Untitled</title>
-    <link rel="stylesheet" href="bootstrap.min.css" />
-    <link rel="stylesheet" href="styles.css" />
-   <style>
-      body {
-        background-color: #eee;
-      }
-      input {
-        border-top-style: hidden;
-        border-right-style: hidden;
-        border-left-style: hidden;
-        border-bottom-style: groove;
-        background-color: #eee;
-      }
-      
-      .no-outline:focus {
-        outline: none;
-      }
-    </style>
-	<style>
-div {
-   border: 1px offwhite;
-  margin-top:  -50px;
-  margin-bottom: 100px;
-  margin-right: 150px;
-  margin-left: 290px;
-  background-color: offwhite;
-}
-</style>
-
-<style>
-.button {
-  background-color: #87CEEB; /* Green */
-  border: none;
-  color: white;
-  padding: 25px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 8px 2px;
-  cursor: pointer;
-}
-
-.button1 {border-radius: 2px;}
-.button2 {border-radius: 4px;}
-.button3 {border-radius: 8px;}
-.button4 {border-radius: 12px;}
-.button5 {border-radius: 50%;}
-</style>
-<style>
-img {
-  position: absolute;
-  left: 800px;
-  top: 100px;
-  z-index: -1;
-}
-</style>
-
-</head>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Untitled</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/css/Navigation-Clean.css">
     <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="#">Shadi.com</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
-        <div class="collapse navbar-collapse" id="navbarColor01">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Profile</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Likes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact Us</a>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Logout</button>
-            </form>
-        </div>
-    </nav>
-    
-</body>
-	
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">Shadi.com</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
+            aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/profile/detail">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/profile/detail">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/profile/editprofile">Edit profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/profile/candidates">Find People</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Contact">Contact Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/feedback">FeedBack</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Logout</button>
+        </form>
+    </div>
+</nav>
+
+
+
+
 <div>
 
-<img src="1.png" alt="Trulli" width="290" height="550">
-<br><br>	<br><br>		
-<h2 style="font-size: 35px;"><i> Contact Us </i></h2>
-<body><em><strong>Online Marriage.com</strong></em>
+    <h2 style="font-size: 35px;"><i> Contact Us </i></h2>
+    <em><strong>Online Marriage.com</strong></em>
     <h1 style="font-size: 35px;"></h1>
-	<em>
-	<strong>Drop a line for us in case of any querry</strong>
-	</em>
-	<br><br>
-<form method="post" action="/ContactMessage">
-    <input type="text" class="form-control-plaintext" placeholder="Your Name"  name="name"/>
-    <br>
-    <input type="text" class="form-control-plaintext" placeholder="Your Email Address"  name="email"/>
-    <br>
-    <input type="text" class="form-control-plaintext" placeholder="Message"  name="Message"/>
-    <br>
-    <br><br><br>
+    <em>
+        <strong>Drop a line for us in case of any querry</strong>
+    </em>
+    <br><br>
+    <form method="post" action="/ContactMessage">
+        <input type="text" class="form-control-plaintext" placeholder="Your Name"  name="name"/>
+        <br>
+        <input type="text" class="form-control-plaintext" placeholder="Your Email Address"  name="email"/>
+        <br>
+        <input type="text" class="form-control-plaintext" placeholder="Message"  name="Message"/>
+        <br>
+        <br><br><br>
         <div class="col-md-2">
-        <input type="submit">
-    </div>
-    <br>
+            <input type="submit">
+        </div>
+        <br>
 
 
-</form>
-<em><button class="button button5">Submit</button></em>
+    </form>
 
-
-	</body>
 </div>
+</body>
+
 </html>

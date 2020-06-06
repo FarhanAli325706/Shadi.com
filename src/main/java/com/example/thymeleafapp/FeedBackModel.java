@@ -7,8 +7,7 @@ import java.io.Serializable;
 @Table(name = "feedback")
 public class FeedBackModel implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer fID;
+    private Integer fid;
     private String description;
     private Integer user_id;
 
@@ -16,17 +15,17 @@ public class FeedBackModel implements Serializable {
     }
 
     public FeedBackModel(Integer fID, String description, Integer user_id) {
-        this.fID = fID;
+        this.fid = fID;
         this.description = description;
         this.user_id = user_id;
     }
 
-    public Integer getfID() {
-        return fID;
+    public Integer getFid() {
+        return fid;
     }
 
-    public void setfID(Integer fID) {
-        this.fID = fID;
+    public void setFid(Integer fid) {
+        this.fid = fid;
     }
 
     public String getDescription() {
